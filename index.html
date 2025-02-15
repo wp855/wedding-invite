@@ -39,16 +39,18 @@
             position: relative;
         }
         .slide {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            z-index: 0;
-        }
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top; /* Keeps the top part in view */
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 0;
+}
+
         .slide.active {
             opacity: 1;
             z-index: 1;
