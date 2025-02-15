@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+            overflow-x: hidden;
+            background: #f4f4f9;
+        }
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background: #fff5e6;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4em;
+            color: #c97b63;
+            margin: 0;
+        }
+        header p {
+            font-size: 1.2em;
+            color: #555;
+        }
+        .slideshow {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: url('./bg1.jpg') no-repeat center center;
+            background-size: cover;
+        }
+        .slideshow-inner {
+            width: 60%;
+            height: 80%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            object-fit: cover;
+        }
+        .slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+        .venue {
+            text-align: center;
+            padding: 50px 20px;
+            background: #fff;
+        }
+        .venue h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3em;
+            color: #c97b63;
+        }
+        .venue p {
+            font-size: 1.2em;
+            color: #555;
+        }
+        .audio-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #c97b63;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>John & Jane</h1>
+        <p>Are Getting Married</p>
+        <p>12th December 2025</p>
+    </header>
+
+    <section class="gallery">
+        <div class="slideshow">
+            <div class="slideshow-inner">
+                <img src="./p1.png" alt="Gallery Image 1" class="slide active">
+                <img src="./p2.png" alt="Gallery Image 2" class="slide">
+                <img src="./p3.png" alt="Gallery Image 3" class="slide">
+            </div>
+        </div>
+    </section>
+
+    <section class="venue">
+        <h2>Venue Details</h2>
+        <p>St. Mary's Church, Downtown City</p>
+        <p><a href="#">View on Map</a></p>
+    </section>
+
+    <audio id="bg-music" src="./m1.mp3" autoplay loop></audio>
+    <button class="audio-control" onclick="toggleMusic()">🔊</button>
+
+    <script>
+        // Slideshow Logic
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        function changeSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+            currentSlide = (currentSlide + 1) % slides.length;
+        }
+        setInterval(changeSlide, 3000); // Change slide every 3 seconds
+
+        // Music Control
+        const audio = document.getElementById('bg-music');
+        setTimeout(() => {
+            audio.muted = false;
+            audio.play();
+        }, 2000); // Play music after 2 seconds
+
+        function toggleMusic() {
+            if (audio.muted) {
+                audio.muted = false;
+                audio.play();
+            } else {
+                audio.muted = true;
+            }
+        }
+    </script>
+</body>
+</html>

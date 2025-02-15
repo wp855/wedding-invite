@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+            overflow-x: hidden;
+            background: url('./bg4k.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #4a4a4a; /* Darker text color */
+        }
+        header {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        header h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4em;
+            color: #8b5e34; /* Darker color for better visibility */
+        }
+        header p {
+            font-size: 1.2em;
+            color: #4a4a4a;
+        }
+        .slideshow {
+            position: relative;
+            width: 50%;
+            margin: 0px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            height: 400px;
+        }
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            z-index: 0;
+        }
+        .slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+        .about-tiles {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 50px 20px;
+        }
+        .about-tile {
+            width: 250px;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            cursor: pointer;
+            text-align: center;
+            padding-top: 230px;
+            font-size: 1.1em;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        }
+        .venue {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .venue h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3em;
+            color: #8b5e34;
+        }
+        .venue p {
+            font-size: 1.2em;
+            color: #4a4a4a;
+        }
+        .audio-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #8b5e34;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>John & Jane</h1>
+        <p>Are Getting Married</p>
+        <p>12th December 2025</p>
+    </header>
+
+    <section class="gallery">
+        <div class="slideshow">
+            <img src="./p1.png" alt="Gallery Image 1" class="slide active">
+            <img src="./p2.png" alt="Gallery Image 2" class="slide">
+            <img src="./p3.png" alt="Gallery Image 3" class="slide">
+        </div>
+    </section>
+
+    <section class="about-tiles">
+        <div class="about-tile" style="background-image: url('./bride.jpg');" onclick="location.href='bride.html';">
+            Bride
+        </div>
+        <div class="about-tile" style="background-image: url('./groom.jpg');" onclick="location.href='groom.html';">
+            Groom
+        </div>
+    </section>
+
+    <section class="venue">
+        <h2>Venue Details</h2>
+        <p>St. Mary's Church, Downtown City</p>
+        <p><a href="#">View on Map</a></p>
+    </section>
+
+    <audio id="bg-music" src="./m1.mp3" autoplay loop></audio>
+    <button class="audio-control" onclick="toggleMusic()">🔊</button>
+
+    <script>
+        // Slideshow Logic
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        function changeSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+            currentSlide = (currentSlide + 1) % slides.length;
+        }
+        setInterval(changeSlide, 3000);
+
+        // Music Control
+        const audio = document.getElementById('bg-music');
+        audio.muted = false;
+        audio.play();
+
+        function toggleMusic() {
+            if (audio.muted) {
+                audio.muted = false;
+                audio.play();
+            } else {
+                audio.muted = true;
+            }
+        }
+    </script>
+</body>
+</html>
