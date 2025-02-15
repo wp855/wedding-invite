@@ -2,23 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Wedding Invitation</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        /* ... (keep previous styles unchanged until slideshow section) ... */
-
+        body {
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+            overflow-x: hidden;
+            background: url('./bg4k.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #4a4a4a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            text-align: center;
+            padding: 20px 10px;
+            flex-shrink: 0;
+        }
+        header h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5em;
+            color: #8b5e34;
+            margin: 10px 0;
+        }
+        header p {
+            font-size: 1em;
+            color: #4a4a4a;
+            margin: 5px 0;
+        }
         .slideshow {
             position: relative;
-            width: 80%;
-            max-width: 800px;
-            margin: 30px auto;
+            width: 90%;
+            margin: 20px auto;
             overflow: hidden;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            aspect-ratio: 3/4; /* Maintain portrait ratio */
+            aspect-ratio: 3/4;
         }
-
         .slide {
             width: 100%;
             height: 100%;
@@ -28,58 +51,74 @@
             opacity: 0;
             transition: opacity 1s ease-in-out;
             z-index: 0;
-            object-fit: cover; /* Ensure images fill container */
+            object-fit: cover;
+            background: #fff; /* Fallback color */
         }
+        .slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+        /* Keep other styles the same */
 
-        /* Mobile-first media queries */
         @media screen and (min-width: 768px) {
-            .slideshow {
-                width: 60%;
-                height: 700px;
-            }
-            
-            header h1 {
-                font-size: 5em;
-            }
-            
-            header p {
-                font-size: 1.5em;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .slideshow {
-                width: 90%;
-                aspect-ratio: 3/4;
-            }
-            
-            header h1 {
-                font-size: 3em;
-            }
-            
-            header p {
-                font-size: 1.1em;
-            }
-            
-            .about-section button {
-                padding: 12px 25px;
-                font-size: 1em;
-                margin: 10px;
-            }
-            
-            .audio-control {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
-            }
+            header h1 { font-size: 4em; }
+            header p { font-size: 1.2em; }
+            .slideshow { width: 35%; }
         }
     </style>
 </head>
 <body>
-    <!-- ... (keep body content unchanged) ... -->
+    <header>
+        <h1>Vinod & Bhanu</h1>
+        <p>Are Getting Married on</p>
+        <p>23rd February 2025</p>
+    </header>
+
+    <section class="gallery">
+        <div class="slideshow">
+            <img src="./p1.jpg" alt="Gallery Image 1" class="slide active" loading="lazy">
+            <img src="./p2.jpg" alt="Gallery Image 2" class="slide" loading="lazy">
+            <img src="./p3.jpg" alt="Gallery Image 3" class="slide" loading="lazy">
+        </div>
+    </section>
+
+    <!-- Rest of the content remains same -->
 
     <script>
-        // ... (keep existing script unchanged) ...
+        // Simplified initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                // Slideshow
+                const slides = document.querySelectorAll('.slide');
+                let currentSlide = 0;
+                function changeSlide() {
+                    slides.forEach((slide, index) => {
+                        slide.classList.toggle('active', index === currentSlide);
+                    });
+                    currentSlide = (currentSlide + 1) % slides.length;
+                }
+                if (slides.length > 0) setInterval(changeSlide, 3000);
+
+                // Audio handling
+                const audio = document.getElementById('bg-music');
+                if (audio) {
+                    audio.volume = 0.5;
+                    audio.play().catch(error => {
+                        console.log('Audio playback prevented:', error);
+                    });
+                }
+            } catch (error) {
+                console.error('Initialization error:', error);
+            }
+        });
+
+        function toggleMusic() {
+            const audio = document.getElementById('bg-music');
+            if (audio) {
+                audio.muted = !audio.muted;
+                document.querySelector('.audio-control').textContent = audio.muted ? '🔇' : '🔊';
+            }
+        }
     </script>
 </body>
 </html>
