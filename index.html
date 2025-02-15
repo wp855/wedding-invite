@@ -12,7 +12,7 @@
             overflow-x: hidden;
             background: url('./bg4k.jpg') no-repeat center center fixed;
             background-size: cover;
-            color: #4a4a4a; /* Darker text color */
+            color: #4a4a4a;
         }
         header {
             text-align: center;
@@ -21,7 +21,7 @@
         header h1 {
             font-family: 'Great Vibes', cursive;
             font-size: 4em;
-            color: #8b5e34; /* Darker color for better visibility */
+            color: #8b5e34;
         }
         header p {
             font-size: 1.2em;
@@ -30,7 +30,7 @@
         .slideshow {
             position: relative;
             width: 35%;
-            margin: 0px auto;
+            margin: 50px auto;
             overflow: hidden;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
@@ -50,25 +50,29 @@
             opacity: 1;
             z-index: 1;
         }
-        .about-tiles {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+        .about-section {
+            text-align: center;
             padding: 50px 20px;
         }
-        .about-tile {
-            width: 250px;
-            height: 300px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            cursor: pointer;
-            text-align: center;
-            padding-top: 230px;
-            font-size: 1.1em;
+        .about-section h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3em;
+            color: #8b5e34;
+        }
+        .about-section button {
+            background: #8b5e34;
             color: #fff;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+            border: none;
+            border-radius: 5px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: background 0.3s;
+        }
+        .about-section button:hover {
+            background: #a67342;
         }
         .venue {
             text-align: center;
@@ -97,6 +101,21 @@
             cursor: pointer;
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
             z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .play-overlay {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            background: #8b5e34;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
     </style>
 </head>
@@ -115,22 +134,19 @@
         </div>
     </section>
 
-    <section class="about-tiles">
-        <div class="about-tile" style="background-image: url('./bride.jpg');" onclick="location.href='bride.html';">
-            Bride
-        </div>
-        <div class="about-tile" style="background-image: url('./groom.jpg');" onclick="location.href='groom.html';">
-            Groom
-        </div>
+    <section class="about-section">
+        <h2>About Bride & Groom</h2>
+        <button onclick="location.href='bride.html';">Bhanu</button>
+        <button onclick="location.href='groom.html';">Vinod</button>
     </section>
 
     <section class="venue">
         <h2>Venue Details</h2>
-        <p>Wedding Hal</p>
+        <p>Wedding Hall</p>
         <p><a href="https://maps.app.goo.gl/EELWayv29uq8d7pm8">View on Map</a></p>
     </section>
 
-    <audio id="bg-music" src="./m1.mp3" autoplay loop></audio>
+    <audio id="bg-music" loop></audio>
     <button class="audio-control" onclick="toggleMusic()">🔊</button>
 
     <script>
@@ -147,16 +163,41 @@
 
         // Music Control
         const audio = document.getElementById('bg-music');
-        audio.muted = false;
-        audio.play();
+        audio.volume = 0.5; // Set initial volume to 50%
+        audio.src = './m1.mp3';
+
+        // Modern autoplay handling with user interaction fallback
+        document.addEventListener('DOMContentLoaded', () => {
+            const playAudio = () => {
+                audio.play().catch(error => {
+                    // Show play button if autoplay fails
+                    const playButton = document.createElement('div');
+                    playButton.className = 'play-overlay';
+                    playButton.innerHTML = '🎵 Play Music';
+                    playButton.onclick = () => {
+                        audio.play();
+                        playButton.remove();
+                    };
+                    document.body.appendChild(playButton);
+                });
+            };
+
+            // Try autoplay when user interacts with the page
+            document.body.addEventListener('click', () => {
+                if (audio.paused) playAudio();
+            }, { once: true });
+
+            // Initial autoplay attempt
+            playAudio();
+        });
 
         function toggleMusic() {
-            if (audio.muted) {
-                audio.muted = false;
-                audio.play();
-            } else {
-                audio.muted = true;
-            }
+            audio.muted = !audio.muted;
+            const button = document.querySelector('.audio-control');
+            button.textContent = audio.muted ? '🔇' : '🔊';
+            
+            if (!audio.paused) return;
+            audio.play();
         }
     </script>
 </body>
