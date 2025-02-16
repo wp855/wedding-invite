@@ -9,9 +9,9 @@
         body {
             margin: 0;
             font-family: 'Open Sans', sans-serif;
-            background: url('./bg3-1.jpg') no-repeat center center fixed;
+            background: url('./bg.jpg') no-repeat center center fixed;
             background-size: cover;
-            color: #4a4a4a; /* Darker text color for contrast */
+            color: #4a4a4a;
         }
         header {
             text-align: center;
@@ -20,7 +20,7 @@
         header h1 {
             font-family: 'Great Vibes', cursive;
             font-size: 4em;
-            color: #8b5e34; /* Darker brown for better visibility */
+            color: #8b5e34;
         }
         .main-tile {
             width: 300px;
@@ -30,6 +30,26 @@
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
             margin: 0 auto 30px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .main-tile .popup {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 0 0 10px 10px;
+            font-size: 1em;
+            text-align: center;
+        }
+        .main-tile:hover .popup {
+            display: block;
         }
         .sub-tiles {
             display: flex;
@@ -48,6 +68,29 @@
             padding-top: 180px;
             font-size: 0.9em;
             color: #4a4a4a;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .sub-tile p {
+            margin: 0;
+            font-weight: bold;
+        }
+        .sub-tile .popup {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 0 0 10px 10px;
+            font-size: 0.8em;
+        }
+        .sub-tile:hover .popup {
+            display: block;
         }
         .back-button {
             display: block;
@@ -68,17 +111,22 @@
         <h1>About the Groom</h1>
     </header>
     
-    <div class="main-tile"></div>
+    <div class="main-tile">
+        <div class="popup">The Groom: Brave sailor, ambitious, and kind-hearted.</div>
+    </div>
 
     <section class="sub-tiles">
         <div class="sub-tile" style="background-image: url('./g-mom.jpg');">
-            <p>Mother's Name</p>
+            <p>Suryaprabha</p>
+            <div class="popup">A caring and strong mother and housewife that's also the MPTC of our village!</div>
         </div>
         <div class="sub-tile" style="background-image: url('./g-dad.jpg');">
-            <p>Father's Name</p>
+            <p>Lakshmi Narayana</p>
+            <div class="popup">A humble father and a great farmer.</div>
         </div>
         <div class="sub-tile" style="background-image: url('./g-sibling.jpg');">
-            <p>Sibling's Name</p>
+            <p>Sri Harsha</p>
+            <div class="popup">Brother.</div>
         </div>
     </section>
 
