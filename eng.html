@@ -47,13 +47,17 @@
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             transition: transform 0.3s ease;
-            aspect-ratio: 3/4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f0f0f0; /* Optional: Add a background color to fill any empty space */
         }
 
         .photo-item img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto; /* Ensures the image scales proportionally */
+            max-height: 100%; /* Ensures the image doesn't exceed the container's height */
+            object-fit: contain; /* Ensures the entire image is visible within the container */
         }
 
         .back-btn {
