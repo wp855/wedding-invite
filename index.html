@@ -6,6 +6,7 @@
     <title>Vinod & Bhanu's Wedding</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
     <style>
+        /* Existing styles remain unchanged */
         * {
             margin: 0;
             padding: 0;
@@ -67,7 +68,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center top; /* Focus on top portion */
+            object-position: center top;
             border-radius: 10px;
         }
 
@@ -124,6 +125,11 @@
             border-color: #8b5e34;
         }
 
+        /* New style for hidden audio element */
+        #wedding-music {
+            display: none;
+        }
+
         @media (max-width: 768px) {
             .slideshow-container {
                 width: 96%;
@@ -167,7 +173,16 @@
                 <img src="./p2.jpg" alt="Our Happy Moment 2">
             </div>
             <div class="slide">
-                <img src="./p3.jpg" alt="Our Happy Moment 3">
+                <img src="./image17.jpg" alt="Our Happy Moment 3">
+            </div>
+        </section>
+
+        <!-- Engagement Photos Button Section -->
+        <section class="content-section">
+            <div class="btn-container">
+                <button class="nav-btn" onclick="playMusic(); window.location.href='eng.html';">
+                    Engagement Photos
+                </button>
             </div>
         </section>
 
@@ -187,7 +202,19 @@
                     View Location on Map
                 </a>
             </p>
+            <!-- RSVP Button -->
+            <div class="btn-container" style="margin-top: 20px;">
+                <button class="nav-btn" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSefzg0d5qW45-2TRZxD7uXJDGAx-L70JfK5gEtQhVAw3ErSRw/viewform?usp=dialog', '_blank')">
+                    RSVP Now
+                </button>
+            </div>
         </section>
+
+        <!-- Hidden Audio Element -->
+        <audio id="wedding-music">
+            <source src="./m1.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
     </main>
 
     <script>
@@ -215,7 +242,6 @@
         window.addEventListener('load', () => {
             const images = document.querySelectorAll('.slide img');
             images.forEach(img => {
-                // Ensure images maintain their aspect ratio
                 if (img.naturalWidth > 0 && img.naturalHeight > 0) {
                     const container = img.parentElement;
                     container.style.paddingBottom = 
@@ -223,6 +249,14 @@
                 }
             });
         });
+
+        // Music play function
+        function playMusic() {
+            const audio = document.getElementById('wedding-music');
+            audio.play().catch(error => {
+                console.log('Audio playback prevented:', error);
+            });
+        }
     </script>
 </body>
 </html>
