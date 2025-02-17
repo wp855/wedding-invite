@@ -51,46 +51,28 @@
         .main-tile:hover .popup {
             display: block;
         }
-        .sub-tiles {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+        .text-boxes {
+            max-width: 600px;
+            margin: 0 auto;
             padding: 20px;
         }
-        .sub-tile {
-            width: 200px;
-            height: 250px;
-            background-size: cover;
-            background-position: center;
+        .text-box {
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            text-align: center;
-            padding-top: 180px;
-            font-size: 0.9em;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            padding: 20px;
+            margin-bottom: 20px;
+            font-size: 1.1em;
             color: #4a4a4a;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
+            text-align: center;
         }
-        .sub-tile p {
+        .text-box h3 {
             margin: 0;
-            font-weight: bold;
+            font-size: 1.3em;
+            color: #8b5e34;
         }
-        .sub-tile .popup {
-            display: none;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            color: #fff;
-            padding: 10px;
-            box-sizing: border-box;
-            border-radius: 0 0 10px 10px;
-            font-size: 0.8em;
-        }
-        .sub-tile:hover .popup {
-            display: block;
+        .text-box p {
+            margin: 10px 0 0;
         }
         .back-button {
             display: block;
@@ -108,25 +90,25 @@
 </head>
 <body>
     <header>
-        <h1>About the Bride</h1>
+        <h1>Bride</h1>
     </header>
     
     <div class="main-tile">
         <div class="popup">The Bride: Graceful, loving, and full of joy.</div>
     </div>
 
-    <section class="sub-tiles">
-        <div class="sub-tile" style="background-image: url('./b-mom.jpg');">
-            <p>Annapurna</p>
-            <div class="popup">Mother.</div>
+    <section class="text-boxes">
+        <div class="text-box">
+            <h3>Annapurna</h3>
+            <p>A loving and supportive mother who has always been by her side.</p>
         </div>
-        <div class="sub-tile" style="background-image: url('./b-dad.jpg');">
-            <p>Siva Prasad</p>
-            <div class="popup">Father.</div>
+        <div class="text-box">
+            <h3>Siva Prasad</h3>
+            <p>A guiding light and a pillar of strength for the bride.</p>
         </div>
-        <div class="sub-tile" style="background-image: url('./b-sibling.jpg');">
-            <p>Sibling's Name</p>
-            <div class="popup">Brother.</div>
+        <div class="text-box">
+            <h3>Vamsi</h3>
+            <p>A wonderful sibling who shares laughter and love with her.</p>
         </div>
     </section>
 
