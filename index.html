@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinod & Bhuvaneswari Wedding</title>
+    <title>Vinod & Bhuvaneswari's Wedding</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        /* Existing styles remain unchanged */
+        /* All original styles remain unchanged */
         * {
             margin: 0;
             padding: 0;
@@ -54,7 +54,7 @@
         .slide {
             width: 100%;
             height: 0;
-            padding-bottom: 125%; /* 4:5 aspect ratio */
+            padding-bottom: 125%;
             position: relative;
             display: none;
         }
@@ -111,6 +111,7 @@
         .venue-info {
             font-size: clamp(1rem, 4vw, 1.1rem);
             margin: 1.2rem 0;
+            line-height: 1.8;
         }
 
         .map-link {
@@ -125,9 +126,11 @@
             border-color: #8b5e34;
         }
 
-        /* New style for hidden audio element */
-        #wedding-music {
-            display: none;
+        .countdown-timer {
+            font-size: clamp(1.1rem, 4vw, 1.3rem);
+            margin: 2rem 0;
+            color: #8b5e34;
+            line-height: 1.6;
         }
 
         @media (max-width: 768px) {
@@ -147,7 +150,7 @@
 
         @media (max-width: 480px) {
             .slide {
-                padding-bottom: 133%; /* 3:4 aspect ratio */
+                padding-bottom: 133%;
             }
             
             .nav-btn {
@@ -161,7 +164,9 @@
     <header>
         <h1>Vinod & Bhuvaneswari</h1>
         <p>Are Getting Married on</p>
-        <p>23rd February 2025</p>
+        <p>23rd February 2025<br>
+            in</p>
+        <div class="countdown-timer" id="countdown"></div>
     </header>
 
     <main>
@@ -177,10 +182,9 @@
             </div>
         </section>
 
-        <!-- Engagement Photos Button Section -->
         <section class="content-section">
             <div class="btn-container">
-                <button class="nav-btn" onclick="playMusic(); window.location.href='eng.html';">
+                <button class="nav-btn" onclick="window.location.href='eng.html';">
                     Engagement Photos
                 </button>
             </div>
@@ -195,30 +199,68 @@
         </section>
 
         <section class="content-section">
-            <h2 class="section-title">Venue Details</h2>
-            
+            <h2 class="section-title">Wedding Venue</h2>
             <p class="venue-info">
-                <a href="https://maps.app.goo.gl/Jhx7799UuTsjYScm8">
-                    Wedding Hall
+                <a href="https://maps.app.goo.gl/Jhx7799UuTsjYScm8" class="map-link" target="_blank">
+                    Sri Gogineni Achyutha Ramayya, Suseela Devi Function Hall<br>
+                
                 </a>
             </p>
-            <!-- RSVP Button -->
-            <div class="btn-container" style="margin-top: 20px;">
-                <button class="nav-btn" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSefzg0d5qW45-2TRZxD7uXJDGAx-L70JfK5gEtQhVAw3ErSRw/viewform?usp=dialog', '_blank')">
-                    RSVP Now
-                </button>
-            </div>
+            
+            <h2 class="section-title" style="margin-top: 3rem;">Reception Details</h2>
+            <p class="venue-info">
+                <a href="https://maps.app.goo.gl/MCf5rUBGJmgLGrVGA" class="map-link" target="_blank">
+                    At our Residence<br>
+                    Manduru
+                </a><br>
+                Time: 6:00 AM onwards
+            </p>
         </section>
 
-        
-        <audio id="wedding-music">
-            <source src="./m.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
+        <section class="content-section">
+            <h2 class="section-title">Lunch Details</h2>
+            <div class="venue-info">
+                <p><strong>Wedding Lunch</strong><br>
+                23rd February 2025<br>
+                12:00 PM Onwards<br>
+                Sri Gogineni Achyutha Ramayya, Suseela Devi Function Hall</p>
+
+                <p style="margin-top: 2rem;"><strong>Reception Lunch</strong><br>
+                24th February 2025<br>
+                12:00 PM Onwards<br>
+                At our Residence</p>
+            </div>
+        </section>
     </main>
 
     <script>
-        // Image Slideshow System
+        // Countdown Timer
+        const weddingDate = new Date('2025-02-23T04:52:00Z'); // 10:22 AM IST in UTC
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').innerHTML = `
+                ${days} Days ${hours} Hours<br>
+                ${minutes} Minutes ${seconds} Seconds
+            `;
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = "The Wedding Has Begun!";
+                clearInterval(countdownInterval);
+            }
+        }
+
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Original Slideshow Script
         const slides = document.querySelectorAll('.slide');
         let currentSlide = 0;
 
@@ -233,12 +275,10 @@
             showSlide(currentSlide);
         }
 
-        // Initialize slideshow
         if (slides.length > 1) {
             setInterval(nextSlide, 3500);
         }
 
-        // Image preloading and aspect ratio maintenance
         window.addEventListener('load', () => {
             const images = document.querySelectorAll('.slide img');
             images.forEach(img => {
@@ -249,14 +289,6 @@
                 }
             });
         });
-
-        // Music play function
-        function playMusic() {
-            const audio = document.getElementById('wedding-music');
-            audio.play().catch(error => {
-                console.log('Audio playback prevented:', error);
-            });
-        }
     </script>
 </body>
 </html>
