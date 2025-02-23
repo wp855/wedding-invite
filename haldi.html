@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engagement Photos - Vinod & Bhanu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: url('bg4k.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #4a4a4a;
+            line-height: 1.6;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+
+        .gallery-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #8b5e34;
+            text-align: center;
+            margin: 2rem 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem;
+        }
+
+        .photo-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f0f0f0; 
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: auto; 
+            max-height: 100%; 
+            object-fit: contain; 
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #8b5e34;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-btn:hover {
+            background: #a67342;
+        }
+
+        .view-more {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .nav-btn {
+            background: #8b5e34;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 14px 32px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .nav-btn:hover {
+            background: #a67342;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .gallery-title {
+                font-size: 2rem;
+            }
+            
+            .photo-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-btn">← Back to Home</a>
+    
+    <div class="gallery-container">
+        <h1 class="gallery-title">Our Engagement Moments</h1>
+        
+        <div class="photo-grid">
+            
+            <div class="photo-item">
+                <img src="h0.jpg" alt="Engagement Moment 1" loading="lazy">
+            </div>
+            <div class="photo-item">
+                <img src="h1.jpg" alt="Engagement Moment 2" loading="lazy">
+            </div>
+            <div class="photo-item">
+                <img src="h2.jpg" alt="Engagement Moment 3" loading="lazy">
+            </div>
+            <!-- Add more images up to image10.jpg -->
+            <div class="photo-item">
+                <img src="h3.jpg" alt="Engagement Moment 10" loading="lazy">
+            </div>
+            <div class="photo-item">
+                <img src="h4.jpg" alt="Engagement Moment 1" loading="lazy">
+            </div>
+            <div class="photo-item">
+                <img src="h5.jpg" alt="Engagement Moment 2" loading="lazy">
+            </div>
+            <div class="photo-item">
+                <img src="h6.jpg" alt="Engagement Moment 3" loading="lazy">
+            </div>
+            
+            <div class="photo-item">
+                <img src="h7.jpg" alt="Engagement Moment 10" loading="lazy">
+            </div>
+            <div class="photo-item">
+                <img src="h8.jpg" alt="Engagement Moment 10" loading="lazy">
+            </div>
+        </div>
+
+        <div class="view-more">
+            <button class="nav-btn" onclick="window.open('https://drive.google.com/drive/folders/1_caEDXXi8Rf78gaK_rYH4zrBTog9qJIA?usp=sharing', '_blank')">
+                View More Photos
+            </button>
+        </div>
+    </div>
+</body>
+</html>
