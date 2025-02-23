@@ -6,7 +6,6 @@
     <title>Vinod & Bhuvaneswari's Wedding</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        /* All original styles remain unchanged */
         * {
             margin: 0;
             padding: 0;
@@ -72,23 +71,12 @@
             border-radius: 10px;
         }
 
-        .content-section {
-            text-align: center;
-            padding: 4vh 20px;
-        }
-
-        .section-title {
-            font-family: 'Great Vibes', cursive;
-            font-size: clamp(2.2rem, 7vw, 3.2rem);
-            color: #8b5e34;
-            margin-bottom: 2.5rem;
-        }
-
         .btn-container {
             display: flex;
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
+            margin-top: 1.5rem;
         }
 
         .nav-btn {
@@ -108,65 +96,50 @@
             transform: translateY(-2px);
         }
 
+        /* Reception Details Styles */
+        .content-section {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            color: #8b5e34;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
         .venue-info {
-            font-size: clamp(1rem, 4vw, 1.1rem);
+            font-size: 1.3rem;
             margin: 1.2rem 0;
             line-height: 1.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .map-link {
             color: #8b5e34;
             text-decoration: none;
-            font-weight: 600;
-            border-bottom: 2px solid transparent;
-            transition: border-color 0.3s ease;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 0.5rem;
         }
 
         .map-link:hover {
-            border-color: #8b5e34;
-        }
-
-        .countdown-timer {
-            font-size: clamp(1.1rem, 4vw, 1.3rem);
-            margin: 2rem 0;
-            color: #8b5e34;
-            line-height: 1.6;
-        }
-
-        @media (max-width: 768px) {
-            .slideshow-container {
-                width: 96%;
-                margin: 3vh auto;
-            }
-            
-            header {
-                padding: 6vh 20px 3vh;
-            }
-            
-            .nav-btn {
-                padding: 12px 24px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .slide {
-                padding-bottom: 133%;
-            }
-            
-            .nav-btn {
-                width: 90%;
-                max-width: 280px;
-            }
+            color: #a67342;
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Vinod & Bhuvaneswari</h1>
-        <p>Are Getting Married on</p>
-        <p>23rd February 2025<br>
-            in</p>
-        <div class="countdown-timer" id="countdown"></div>
+        <p>They have been happily married since 23rd February 2025</p>
+        <p>Thank you for your blessings!</p>
     </header>
 
     <main>
@@ -175,10 +148,10 @@
                 <img src="./p1.jpg" alt="Our Happy Moment 1">
             </div>
             <div class="slide">
-                <img src="./p2.jpg" alt="Our Happy Moment 2">
+                <img src="./m1.jpg" alt="Our Happy Moment 2">
             </div>
             <div class="slide">
-                <img src="./image17.jpg" alt="Our Happy Moment 3">
+                <img src="./m2.jpg" alt="Our Happy Moment 3">
             </div>
         </section>
 
@@ -187,27 +160,17 @@
                 <button class="nav-btn" onclick="window.location.href='eng.html';">
                     Engagement Photos
                 </button>
+                <button class="nav-btn" onclick="window.location.href='haldi.html';">
+                    Haldi Pictures
+                </button>
+                <button class="nav-btn" onclick="window.location.href='wedding.html';">
+                    Wedding Pictures
+                </button>
             </div>
         </section>
 
         <section class="content-section">
-            <h2 class="section-title">About Us</h2>
-            <div class="btn-container">
-                <button class="nav-btn" onclick="location.href='bride.html';">Meet Bhuvaneswari</button>
-                <button class="nav-btn" onclick="location.href='groom.html';">Meet Vinod</button>
-            </div>
-        </section>
-
-        <section class="content-section">
-            <h2 class="section-title">Wedding Venue</h2>
-            <p class="venue-info">
-                <a href="https://maps.app.goo.gl/Jhx7799UuTsjYScm8" class="map-link" target="_blank">
-                    Sri Gogineni Achyutha Ramayya, Suseela Devi Function Hall<br>
-                
-                </a>
-            </p>
-            
-            <h2 class="section-title" style="margin-top: 3rem;">Reception Details</h2>
+            <h2 class="section-title">Reception Details</h2>
             <p class="venue-info">
                 <a href="https://maps.app.goo.gl/MCf5rUBGJmgLGrVGA" class="map-link" target="_blank">
                     At our Residence in Manduru
@@ -215,51 +178,9 @@
                 Time: 6:00 AM onwards
             </p>
         </section>
-
-        <section class="content-section">
-            <h2 class="section-title">Lunch Details</h2>
-            <div class="venue-info">
-                <p><strong>Wedding Lunch</strong><br>
-                23rd February 2025<br>
-                12:00 PM Onwards
-                </p>
-
-                <p style="margin-top: 2rem;"><strong>Reception Lunch</strong><br>
-                24th February 2025
-                12:00 PM Onwards<br>
-                </p>
-            </div>
-        </section>
     </main>
 
     <script>
-        // Countdown Timer
-        const weddingDate = new Date('2025-02-23T04:52:00Z'); // 10:22 AM IST in UTC
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('countdown').innerHTML = `
-                ${days} Days ${hours} Hours<br>
-                ${minutes} Minutes ${seconds} Seconds
-            `;
-
-            if (distance < 0) {
-                document.getElementById('countdown').innerHTML = "The Wedding Has Begun!";
-                clearInterval(countdownInterval);
-            }
-        }
-
-        const countdownInterval = setInterval(updateCountdown, 1000);
-        updateCountdown();
-
-        // Original Slideshow Script
         const slides = document.querySelectorAll('.slide');
         let currentSlide = 0;
 
@@ -277,17 +198,6 @@
         if (slides.length > 1) {
             setInterval(nextSlide, 3500);
         }
-
-        window.addEventListener('load', () => {
-            const images = document.querySelectorAll('.slide img');
-            images.forEach(img => {
-                if (img.naturalWidth > 0 && img.naturalHeight > 0) {
-                    const container = img.parentElement;
-                    container.style.paddingBottom = 
-                        `${(img.naturalHeight / img.naturalWidth) * 100}%`;
-                }
-            });
-        });
     </script>
 </body>
 </html>
